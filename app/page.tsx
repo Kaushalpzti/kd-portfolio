@@ -12,6 +12,7 @@ import {
   Code2,
   Command,
   ExternalLink,
+  Download,
   Layers3,
   Mail,
   MapPin,
@@ -24,9 +25,10 @@ import {
 
 // TODO before launch: replace these values with your real contact/profile URLs.
 // The form opens the visitor's email app; it does not send mail through a server.
-const CONTACT_EMAIL = "kaushalpzti@gmail.com";
-const GITHUB_URL = "https://github.com/kaushalpzti";
-const LINKEDIN_URL = "https://www.linkedin.com/in/kaushalpzti/";
+const CONTACT_EMAIL = "YOUR_EMAIL_HERE"; // Replace with your real professional email before launch.
+const GITHUB_URL = "https://github.com/Kaushalpzti";
+const LINKEDIN_URL = ""; // Add your exact LinkedIn profile URL when ready.
+const RESUME_URL = "/Kaushal-Prazapati-Resume.pdf";
 
 function InstagramGlyph({ size = 16 }: { size?: number }) {
   return (
@@ -304,7 +306,7 @@ export default function HomePage() {
     const topic = String(form.get("topic") ?? "Project enquiry").trim();
     const message = String(form.get("message") ?? "").trim();
 
-    if (!CONTACT_EMAIL.includes("@") || CONTACT_EMAIL === "kaushalpzti@gmail.com") {
+    if (!CONTACT_EMAIL.includes("@") || CONTACT_EMAIL === "YOUR_EMAIL_HERE") {
       setContactStatus(
         "The form is ready, but the recipient email has not been configured. Update CONTACT_EMAIL near the top of app/page.tsx before publishing.",
       );
@@ -382,6 +384,7 @@ export default function HomePage() {
           <div className="hero-actions">
             <a className="button button-primary" href="#projects">Explore my work <ArrowUpRight size={17} /></a>
             <a className="button button-ghost" href="#contact">Let&apos;s connect <ArrowRight size={16} /></a>
+            <a className="button button-ghost resume-button" href={RESUME_URL} download>Download resume <Download size={15} /></a>
           </div>
           <div className="hero-bottomline">
             <div className="location-label"><span className="location-icon"><MapPin size={14} /></span> Patna, India <span className="tiny-separator">·</span> Building for the web</div>
@@ -616,7 +619,7 @@ export default function HomePage() {
               <button className="button button-ghost copy-button" type="button" onClick={copyIntro}>{copied ? <><Check size={16} /> Message copied</> : <><Mail size={16} /> Copy intro message</>}</button>
             </div>
             <div className="contact-profile-links" aria-label="Professional links">
-              {CONTACT_EMAIL.includes("@") && CONTACT_EMAIL !== "kaushalpzti@gmail.com" && (
+              {CONTACT_EMAIL.includes("@") && CONTACT_EMAIL !== "YOUR_EMAIL_HERE" && (
                 <a href={`mailto:${CONTACT_EMAIL}`}>Email <ArrowUpRight size={13} /></a>
               )}
               {GITHUB_URL && (
@@ -625,6 +628,7 @@ export default function HomePage() {
               {LINKEDIN_URL && (
                 <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={13} /></a>
               )}
+              <a href={RESUME_URL} download>Resume PDF <Download size={13} /></a>
             </div>
           </div>
           <div className="contact-art" aria-hidden="true"><div className="contact-ring ring-one" /><div className="contact-ring ring-two" /><div className="contact-ring ring-three" /><span>KD<span>.</span></span><div className="contact-star star-one">✳</div><div className="contact-star star-two">✦</div></div>
